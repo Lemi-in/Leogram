@@ -9,6 +9,7 @@ const path = require('path');
 const app = express();
 
 
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log('MongoDB Connected datatbase...'))
@@ -35,6 +36,15 @@ app.get('/signup', (req, res) => {
 // Serve CSS files with the correct MIME type
 app.get('/signup.css', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/pages/signup.css'));
+});
+
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/pages/login.html'));
+});
+// Serve CSS files with the correct MIME type
+app.get('/login.css', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/pages/login.css'));
 });
 
 const PORT = process.env.PORT || 3000;
